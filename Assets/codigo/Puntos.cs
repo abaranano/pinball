@@ -35,11 +35,10 @@ public class Puntos : MonoBehaviour
         }
     }
 
-
     private void Start()
     {
         Points=0;
-        balls=10;
+        balls=1;
     }
 
     private void Update()
@@ -55,15 +54,16 @@ public class Puntos : MonoBehaviour
         else if (balls == 0)
         {
             text1.SetText("Puntuazioa: " + Points.ToString());
-            text2.SetText("Sakatu 'Escape' berriro hasteko");
+            text2.SetText("Sakatu 'Backspace' berriro hasteko");
             bola.transform.position = amaiera.transform.position;
+            if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                Points = 0;
+                balls = 10;
+                bola.transform.position = hasiera.transform.position;
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Points = 0;
-            balls = 10;
-            bola.transform.position = hasiera.transform.position;
-        }
+        
     }
 }
